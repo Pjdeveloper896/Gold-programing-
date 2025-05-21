@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gold Programming Docs</title>
+    <link rel="icon" href="ttps://pjdeveloper896.github.io/Gold-programing-/Gold.png" type="image/x-icon">
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      background: #f9f9f9;
+      color: #222;
+    }
+    header {
+      background: gold;
+      padding: 1rem;
+      text-align: center;
+    }
+    header img {
+      height: 50px;
+      vertical-align: middle;
+    }
+    header h1 {
+      display: inline-block;
+      margin-left: 1rem;
+      font-size: 2rem;
+      vertical-align: middle;
+    }
+    nav {
+      background: #333;
+    }
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+    nav li {
+      flex: 1;
+    }
+    nav a {
+      display: block;
+      padding: 1rem;
+      text-align: center;
+      color: white;
+      text-decoration: none;
+    }
+    nav a:hover {
+      background: #444;
+    }
+    main {
+      padding: 2rem;
+      min-height: 300px;
+    }
+    footer {
+      background: #eee;
+      padding: 1rem;
+      text-align: center;
+    }
+    code, pre {
+      background: #f0f0f0;
+      padding: 10px;
+      border-radius: 5px;
+      display: block;
+      white-space: pre-wrap;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="https://pjdeveloper896.github.io/Gold-programing-/Gold.png" alt="Gold Logo" />
+    <h1>Gold Programming Language</h1>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#" data-page="home">Home</a></li>
+      <li><a href="#" data-page="installation">Installation</a></li>
+      <li><a href="#" data-page="usage">Usage</a></li>
+      <li><a href="#" data-page="api">API</a></li>
+    </ul>
+  </nav>
+
+  <main id="content"></main>
+
+  <footer>
+    &copy; 2025 Gold Programming Language by PJDeveloper896
+  </footer>
+
+  <script>
+    const pages = {
+      home: `
+<h2>Welcome to Gold Programming Language</h2>
+<p>Gold is a minimal, expressive browser-based programming language with dynamic DOM bindings using HindDom.</p>
+<ul>
+  <li>UI logic</li>
+  <li>Simple reactive state</li>
+  <li>Creative web scripting</li>
+  <li>Custom runtime logic</li>
+</ul>
+<h3>CDN</h3>
+<ul>
+  <li><a href="https://pjdeveloper896.github.io/Gold-programing-/dist/Gold.min.js">Gold.min.js</a></li>
+  <li><a href="https://pjdeveloper896.github.io/Gold-programing-/dist/HindDom.js">HindDom.js</a></li>
+</ul>
+      `,
+      installation: `
+<h2>Installation</h2>
+<p>Include Gold and HindDom via CDN in your HTML:</p>
+<pre>&lt;script src="https://pjdeveloper896.github.io/Gold-programing-/dist/Gold.min.js"&gt;&lt;/script&gt;
+&lt;script src="https://pjdeveloper896.github.io/Gold-programing-/dist/HindDom.js"&gt;&lt;/script&gt;</pre>
+<p>Then create a Gold instance:</p>
+<pre>const gold = new Gold();</pre>
+      `,
+      usage: `
+<h2>Usage</h2>
+<h3>Basic Printing</h3>
+<pre>gold.print("Hello Gold");</pre>
+
+<h3>Variables</h3>
+<pre>gold.set("name", "GoldLang");
+console.log(gold.get("name"));</pre>
+
+<h3>DOM Binding</h3>
+<pre>&lt;span id="username"&gt;&lt;/span&gt;
+&lt;script&gt;
+  gold.set("name", "User");
+  gold.bind("name", "username");
+&lt;/script&gt;</pre>
+
+<h3>Type Checking</h3>
+<pre>gold.type("age", "number");
+gold.set("age", 21); // valid
+gold.set("age", "oops"); // error</pre>
+      `,
+      api: `
+<h2>API Reference</h2>
+<ul>
+  <li><strong>gold.print(value)</strong> — Logs a value with [Gold] prefix.</li>
+  <li><strong>gold.err(error)</strong> — Logs an error with [Gold Error] prefix.</li>
+  <li><strong>gold.set(key, value)</strong> — Assigns a value and triggers reactivity.</li>
+  <li><strong>gold.get(key)</strong> — Returns the value.</li>
+  <li><strong>gold.type(key, type)</strong> — Enforces type safety on a key.</li>
+  <li><strong>gold.bind(key, elementId)</strong> — Binds a variable to a DOM element.</li>
+  <li><strong>gold.eventWatch(key, callback)</strong> — Watch changes to a key.</li>
+  <li><strong>gold.goldArray(...items)</strong> — Creates an advanced array with history.</li>
+  <li><strong>gold.goldObject(obj)</strong> — Creates a reactive object with logging.</li>
+  <li><strong>gold.goldCode(code)</strong> — Runs a string of Gold code.</li>
+  <li><strong>gold.customFetch(url, onSuccess, onError)</strong> — Fetch JSON with callback.</li>
+</ul>
+      `
+    };
+
+    const content = document.getElementById("content");
+    const links = document.querySelectorAll("a[data-page]");
+
+    function loadPage(page) {
+      content.innerHTML = pages[page] || "<h2>Page not found</h2>";
+    }
+
+    links.forEach(link => {
+      link.addEventListener("click", e => {
+        e.preventDefault();
+        const page = link.getAttribute("data-page");
+        loadPage(page);
+      });
+    });
+
+    loadPage("home");
+  </script>
+</body>
+</html>
